@@ -1,0 +1,68 @@
+/* Monochrome professional styles */
+:root{
+	--bg: #f3f4f6;       /* very light gray */
+	--surface: #ffffff;  /* white cards */
+	--muted: #9aa0a6;    /* muted text / borders */
+	--text: #22272b;     /* primary text (dark gray) */
+	--accent: #4b5563;   /* dark gray accent */
+	--border: #e6e9ec;   /* subtle borders */
+	--radius: 10px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+header{max-width:1100px;margin:3rem auto 1rem;padding:0 1rem}
+header h1{margin:0;font-weight:600;font-size:1.25rem;color:var(--text)}
+
+main{max-width:1100px;margin:0 auto;padding:1rem;display:grid;grid-template-columns:1fr;gap:1rem}
+
+/* Card layout for sections */
+section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}
+section h2{margin:0 0 .75rem 0;font-size:1rem;color:var(--accent)}
+
+/* Forms */
+form{display:flex;flex-direction:column;gap:.5rem}
+label{font-size:.875rem;color:var(--muted)}
+input[type="text"],input[type="number"],input[type="date"],input[type="month"],select{padding:.5rem .65rem;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--text);font-size:.95rem}
+input::placeholder{color:var(--muted)}
+
+button{background:var(--accent);color:#fff;border:0;padding:.6rem .9rem;border-radius:6px;cursor:pointer;font-weight:600}
+button[disabled]{opacity:.55;cursor:not-allowed}
+
+/* Specific layout tweaks */
+#baseline-section form{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));display:grid;gap:.6rem}
+#transactions-section form{grid-template-columns:1fr 140px;display:grid;gap:.6rem;align-items:center}
+
+.sub-add{display:flex;gap:.5rem;align-items:center;margin-top:.25rem}
+.sub-add input{flex:1;padding:.45rem .6rem}
+.sub-add .sub-msg{margin-left:.5rem;font-size:.9rem;opacity:0;transition:opacity .2s}
+.sub-add .sub-msg.success{color:#107a34;opacity:1}
+
+select.highlight{box-shadow:0 0 0 6px rgba(75,85,99,0.08);transition:box-shadow .3s}
+
+/* Transactions list and summary */
+#transactions-list ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.35rem}
+#transactions-list li{padding:.5rem;border-radius:6px;border:1px solid var(--border);background:linear-gradient(180deg, #fff,#fbfbfb);font-size:.95rem}
+
+#monthly-summary{padding:.5rem;background:linear-gradient(180deg,#fff,#fbfbfb);border-radius:6px;border:1px solid var(--border)}
+
+/* Footer */
+footer{max-width:1100px;margin:1rem auto;padding:0 1rem;color:var(--muted);font-size:.85rem}
+
+/* Responsive basics */
+@media (min-width:900px){
+	main{grid-template-columns:2fr 1fr}
+	/* left column: baseline + transactions stacked, right column: summary */
+	#summary-section{grid-row:1 / span 2}
+}
+
+@media (max-width:480px){
+	header h1{font-size:1rem}
+	#transactions-section form{grid-template-columns:1fr}
+}
+
+/* small utilities */
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+
