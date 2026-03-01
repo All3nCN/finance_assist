@@ -303,7 +303,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // initial renders
   renderBaselineDisplay();
   renderTransactionsList();
-  renderMonthlySummary('2026-01');
+  const now = new Date();
+  const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+  renderMonthlySummary(currentMonth);
+
 
   console.log('script.js loaded');
   console.log('budgetBaseline:', budgetBaseline);
